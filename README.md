@@ -2,6 +2,36 @@ UnB - Universidade de Brasilia
 FCTE - Faculdade de Ciências e Tecnologias em Engenharias  
 FGA0242 - Técnicas de Programação para Plataformas Emergentes  
 
+---
+
+## 🧑‍💻 Desenvolvedores
+### Time
+
+<div id="div1">
+<br>
+<table>
+     <tr>
+     <td><a href="https://github.com/GabriellyAssuncao">Gabrielly Assunção</a></td>
+        <td><a href="https://github.com/GabriellyAssuncao"><img src="https://avatars.githubusercontent.com/u/86726332?v=4" width="50px;"</a></td>
+        <td><a 
+             href="https://github.com/laisramos123">Laís Ramos</a></td>
+        <td><a href="https://github.com/laisramos123"><img src="https://avatars.githubusercontent.com/u/38669960?v=4" width="50px;"</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/Madu01">Maria Eduarda Barbosa</a></td>
+        <td><a href="https://github.com/Madu01"><img src="https://avatars.githubusercontent.com/u/64814266?v=4" width="50px;"</a></td>
+    </tr>
+         <tr>
+        <td><a href="https://github.com/VitorB2002">Vitor Borges dos Santos</a></td>
+        <td><a href="https://github.com/VitorB2002"><img src="https://avatars.githubusercontent.com/u/78763082?v=4" width="50px;"</a></td>
+         <tr>
+        <td><a href="https://github.com/NyndoND">Renann</a></td>
+        <td><a href="https://github.com/NyndoND"><img src="https://avatars.githubusercontent.com/u/64983769?v=4" width="50px;"</a></td>
+</table>
+</div>
+
+
+
 --- 
 
 # Trabalhos práticos - semestre 2024/2
