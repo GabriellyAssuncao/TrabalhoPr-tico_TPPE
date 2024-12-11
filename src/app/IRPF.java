@@ -289,6 +289,14 @@ public class IRPF {
 		}
 		return soma;
 	}
+
+	public float getTotalDeducoes() {
+		return this.getDeducao() + 
+			this.getTotalOutrasDeducoes() + 
+			this.getTotalPensaoAlimenticia();
+	}
 	
-	
+	public float getBaseCalculo() {
+		return 0.0f;
+	}
 }
