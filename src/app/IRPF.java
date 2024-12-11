@@ -289,16 +289,16 @@ public class IRPF {
 		}
 		return soma;
 	}
-
-	public float getTotalDeducoes() {
-		return this.getDeducao() + 
-			this.getTotalOutrasDeducoes() + 
-			this.getTotalPensaoAlimenticia();
-	}
 	
+	/**
+	 * Obtem o valor do calculo base
+	 * @return valor que sera utilizado para calcular do imposto de renda
+	 */
 	public float getBaseCalculo() {
 		float rendimentosTributaveis = this.getTotalRendimentosTributaveis();
-		float deducoes = this.getTotalDeducoes();
+		float deducoes = this.getDeducao() + 
+				this.getTotalOutrasDeducoes() + 
+				this.getTotalPensaoAlimenticia();
 
 		return rendimentosTributaveis - deducoes;
 	}
