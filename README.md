@@ -5,30 +5,43 @@ FGA0242 - Técnicas de Programação para Plataformas Emergentes
 ---
 
 ## 🧑‍💻 Desenvolvedores
-### Time
 
-<div id="div1">
-<br>
 <table>
-     <tr>
-     <td><a href="https://github.com/GabriellyAssuncao">Gabrielly Assunção</a></td>
-        <td><a href="https://github.com/GabriellyAssuncao"><img src="https://avatars.githubusercontent.com/u/86726332?v=4" width="50px;"</a></td>
-        <td><a 
-             href="https://github.com/laisramos123">Laís Ramos</a></td>
-        <td><a href="https://github.com/laisramos123"><img src="https://avatars.githubusercontent.com/u/38669960?v=4" width="50px;"</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://github.com/Madu01">Maria Eduarda Barbosa</a></td>
-        <td><a href="https://github.com/Madu01"><img src="https://avatars.githubusercontent.com/u/64814266?v=4" width="50px;"</a></td>
-    </tr>
-         <tr>
-        <td><a href="https://github.com/VitorB2002">Vitor Borges dos Santos</a></td>
-        <td><a href="https://github.com/VitorB2002"><img src="https://avatars.githubusercontent.com/u/78763082?v=4" width="50px;"</a></td>
-         <tr>
-        <td><a href="https://github.com/NyndoND">Renann</a></td>
-        <td><a href="https://github.com/NyndoND"><img src="https://avatars.githubusercontent.com/u/64983769?v=4" width="50px;"</a></td>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/GabriellyAssuncao">
+        <img src="https://avatars.githubusercontent.com/u/86726332?v=4" width="180px" style="border-radius: 50%;" alt="Gabrielly Assunção"/>
+        <br/><b>Gabrielly Assunção</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/laisramos123">
+        <img src="https://avatars.githubusercontent.com/u/38669960?v=4" width="190px" style="border-radius: 50%;" alt="Laís Ramos"/>
+        <br/><b>Laís Ramos</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Madu01">
+        <img src="https://avatars.githubusercontent.com/u/64814266?v=4" width="190px" style="border-radius: 50%;" alt="Maria Eduarda Barbosa"/>
+        <br/><b>Maria Eduarda Barbosa</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/NyndoND">
+        <img src="https://avatars.githubusercontent.com/u/64983769?v=4" width="190px" style="border-radius: 50%;" alt="Renann"/>
+        <br/><b>Renann</b>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/VitorB2002">
+        <img src="https://avatars.githubusercontent.com/u/78763082?v=4" width="190px" style="border-radius: 50%;" alt="Vitor Borges dos Santos"/>
+        <br/><b>Vitor Borges</b>
+      </a>
+    </td>
+  </tr>
 </table>
-</div>
+
+
 
 
 
