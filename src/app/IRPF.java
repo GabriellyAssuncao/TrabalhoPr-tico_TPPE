@@ -297,6 +297,9 @@ public class IRPF {
 	}
 	
 	public float getBaseCalculo() {
-		return 0.0f;
+		float rendimentosTributaveis = this.getTotalRendimentosTributaveis();
+		float deducoes = this.getTotalDeducoes();
+
+		return rendimentosTributaveis - deducoes;
 	}
 }
