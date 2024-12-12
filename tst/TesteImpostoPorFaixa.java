@@ -90,9 +90,9 @@ public class TesteImpostoPorFaixa {
 		Object[][] pensoes3 = {{"Pedro", 1000f}, {"Clara", 1400f}};
 
 		
-		float[] impostoFaixa1 = {42.56f, 138.66f, 205.56f, 590.08f};
-		float[] impostoFaixa2 = {42.56f, 138.66f, 150.70f};
-		float[] impostoFaixa3 = {42.56f, 51.63f};
+		float[] impostoFaixa1 = {0, 42.56f, 138.66f, 205.56f, 590.08f};
+		float[] impostoFaixa2 = {0, 42.56f, 138.66f, 150.70f, 0};
+		float[] impostoFaixa3 = {0, 42.56f, 51.63f, 0, 0};
 		
 		Object[][] parametros = new Object[][] {
 			{rendimentos1, outrasDeducoes1, previdencias1, dependentes1, pensoes1, impostoFaixa1},
@@ -104,7 +104,7 @@ public class TesteImpostoPorFaixa {
 	}
 
 	@Test
-	public void test() {
+	public void test() {        
 		assertArrayEquals(irpf.getImpostoPorFaixa(), impostoPorFaixa, 0.01f);
 	}
 

@@ -4,6 +4,9 @@ public class IRPF {
 
 	public static final boolean TRIBUTAVEL = true;
 	public static final boolean NAOTRIBUTAVEL = false;
+	public static float[] limites = {2259.20f, 2826.65f, 3751.05f, 4664.68f};
+	public static float[] aliquotas = {0, 0.075f, 0.15f, 0.225f, 0.275f};
+	
 	private String[] nomeRendimento;
 	private boolean[] rendimentoTributavel;
 	private float[] valorRendimento;
@@ -21,6 +24,7 @@ public class IRPF {
 	
 	private String[] nomesDeducoes;
 	private float[] valoresDeducoes;
+	
 
 	public IRPF() {
 		nomeRendimento = new String[0];
@@ -38,6 +42,8 @@ public class IRPF {
 		
 		nomesDeducoes = new String[0];
 		valoresDeducoes = new float[0];
+		
+		
 	}
 	
 	/**
@@ -302,4 +308,35 @@ public class IRPF {
 
 		return rendimentosTributaveis - deducoes;
 	}
+	
+	
+	/**
+	 * Obtem o valor do imposto de cada faixa
+	 * @return Lista de valores referente a cada faixa
+	 */
+	public float[] getImpostoPorFaixa() {
+		float baseCalculo = getBaseCalculo();
+	
+        float[] valoresTributados = new float[aliquotas.length];
+
+        float remanescente = baseCalculo - limites[0];
+        float limiteAnterior = limites[0];
+
+        for (int i = 1; i < limites.length; i++) {
+            if (remanescente > 0) {
+                float faixa = Math.min(remanescente, limites[i] - limiteAnterior);
+                valoresTributados[i] = faixa * aliquotas[i];
+                remanescente -= faixa;
+                limiteAnterior = limites[i];
+            }
+        }
+        
+        if (remanescente > 0) {
+            valoresTributados[valoresTributados.length - 1] += remanescente * aliquotas[aliquotas.length - 1];
+        }
+
+        return valoresTributados;
+	}
+	
+	
 }
