@@ -353,5 +353,17 @@ public class IRPF {
         return soma;
 	}
 	
+	/**
+	 * Obtem o valor total de Rendimentos Tributáveis
+	 * @return valor resultante da soma de todos os rendimentos tributáveis
+	 */
+	public float getAliquotaEfetiva() {
+		float totalImposto = getTotalImposto();
+		float totalRendTrib = getTotalRendimentosTributaveis();		
+		float aliquotaEfetiva = (totalImposto * 100f)/totalRendTrib;
+
+        return aliquotaEfetiva;
+	}
+	
 	
 }

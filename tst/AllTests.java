@@ -13,7 +13,8 @@ import org.junit.runners.Suite.SuiteClasses;
 				TesteCadastroOutrasDeducoes.class,
 				TesteBaseCalculo.class,
 				TesteTotalImposto.class,
-				TesteImpostoPorFaixa.class})
+				TesteImpostoPorFaixa.class,
+				TesteAliquotaEfetiva.class})
 public class AllTests {
 
 }
