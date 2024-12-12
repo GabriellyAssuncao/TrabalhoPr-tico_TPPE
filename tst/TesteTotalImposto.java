@@ -90,9 +90,9 @@ public class TesteTotalImposto {
 		Object[][] pensoes3 = {{"Pedro", 1000f}, {"Clara", 1400f}};
 
 		Object[][] parametros = new Object[][] {
-			{rendimentos1, outrasDeducoes1, previdencias1, dependentes1, pensoes1, 976,86f},
-			{rendimentos2, outrasDeducoes2, previdencias2, dependentes2, pensoes2, 331,92f},
-			{rendimentos3, outrasDeducoes3, previdencias3, dependentes3, pensoes3, 94,19f}
+			{rendimentos1, outrasDeducoes1, previdencias1, dependentes1, pensoes1, 976.86f},
+			{rendimentos2, outrasDeducoes2, previdencias2, dependentes2, pensoes2, 331.92f},
+			{rendimentos3, outrasDeducoes3, previdencias3, dependentes3, pensoes3, 94.19f}
 		};
 
 		return Arrays.asList(parametros);

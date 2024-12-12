@@ -339,4 +339,19 @@ public class IRPF {
 	}
 	
 	
+	/**
+	 * Obtem o valor total do imposto 
+	 * @return valor resultante da soma de todos os impostos por faixa
+	 */
+	public float getTotalImposto() {
+		float[] impostoPorFaixa = getImpostoPorFaixa();
+
+		float soma = 0f;
+        for (float valor : impostoPorFaixa) {
+            soma += valor;
+        }
+        return soma;
+	}
+	
+	
 }
