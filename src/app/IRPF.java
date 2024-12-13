@@ -295,6 +295,9 @@ public class IRPF {
 		}
 		return soma;
 	}
+
+
+	// ========DESENVOLVIDOS PELO GRUPO========
 	
 	/**
 	 * Obtem o valor do calculo base

@@ -58,41 +58,41 @@ public class TesteAliquotaEfetiva {
 	@Parameters
 	public static Iterable getParameters() {
 		Object[][] rendimentos1 = {
-				{"Salário", true, 8000f}, 
-				{"Aluguel", true, 2000f}, 
-				{"Bolsa de estudos", false, 1500f}
+				{"Salário", true, 9400f}, 
+				{"Aluguel", true, 3000f}, 
+				{"Bolsa de estudos", false, 2500f}
 		};
 		Object[][] rendimentos2 = {
-			    {"Salário", true, 7000f},
-			    {"Aluguel de Temporada", true, 3000f},
-			    {"Lucro de ações", false, 1800f}
+			    {"Salário", true, 11000f},
+			    {"Aluguel de Temporada", true, 2500f},
+			    {"Lucro de ações", false, 2900f}
 		};
 		Object[][] rendimentos3 = {
-		    {"Salário", true, 6000f},
-		    {"Dividendos", true, 2500f},
-		    {"Bolsa de Pesquisa", false, 1200f}
+		    {"Salário", true, 7000f},
+		    {"Dividendos", true, 3600f},
+		    {"Bolsa de Pesquisa", false, 2300f}
 		};
 
-		Object[][] outrasDeducoes1 = {{"prev. privada", 1000f}};
-		Object[][] outrasDeducoes2 = {{"Plano de saúde", 1200f}, {"Educação", 1500f}};
-		Object[][] outrasDeducoes3 = {{"prev. privada", 900f}, {"Transporte", 700f}};
+		Object[][] outrasDeducoes1 = {{"prev. privada", 2300f}};
+		Object[][] outrasDeducoes2 = {{"Plano de saúde", 1300f}, {"Educação", 2500f}};
+		Object[][] outrasDeducoes3 = {{"prev. privada", 800f}, {"Transporte", 600f}};
 
-		float[] previdencias1 = {500f};
-		float[] previdencias2 = {800f, 400f};
-		float[] previdencias3 = {450f, 500f};
+		float[] previdencias1 = {600f};
+		float[] previdencias2 = {900f, 500f};
+		float[] previdencias3 = {550f, 600f};
 
 		Object[][] dependentes1 = {{"João", "filho"}};
 		Object[][] dependentes2 = {{"Lucas", "filho"}, {"Ana", "esposa"}};
 		Object[][] dependentes3 = {{"Pedro", "filho"}, {"Clara", "filha"}};
 
-		Object[][] pensoes1 = {{"João", 1500f}};
-		Object[][] pensoes2 = {{"Lucas", 1300f},{"Ana", 1800f}};
-		Object[][] pensoes3 = {{"Pedro", 1000f}, {"Clara", 1400f}};
+		Object[][] pensoes1 = {{"João", 1600f}};
+		Object[][] pensoes2 = {{"Lucas", 1400f},{"Ana", 1800f}};
+		Object[][] pensoes3 = {{"Pedro", 1200f}, {"Clara", 1100f}};
 
 		Object[][] parametros = new Object[][] {
-			{rendimentos1, outrasDeducoes1, previdencias1, dependentes1, pensoes1, 9.768f},
-			{rendimentos2, outrasDeducoes2, previdencias2, dependentes2, pensoes2, 3.3192f},
-			{rendimentos3, outrasDeducoes3, previdencias3, dependentes3, pensoes3, 1.108f}
+			{rendimentos1, outrasDeducoes1, previdencias1, dependentes1, pensoes1, 9.873f},
+			{rendimentos2, outrasDeducoes2, previdencias2, dependentes2, pensoes2, 6.646f},
+			{rendimentos3, outrasDeducoes3, previdencias3, dependentes3, pensoes3, 5.480f}
 		};
 
 		return Arrays.asList(parametros);

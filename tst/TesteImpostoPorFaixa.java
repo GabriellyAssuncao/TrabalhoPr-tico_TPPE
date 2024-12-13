@@ -58,19 +58,19 @@ public class TesteImpostoPorFaixa {
 	@Parameters
 	public static Iterable getParameters() {
 		Object[][] rendimentos1 = {
-				{"Salário", true, 8000f}, 
-				{"Aluguel", true, 2000f}, 
-				{"Bolsa de estudos", false, 1500f}
+            {"Salário", true, 8000f}, 
+            {"Aluguel", true, 2000f}, 
+            {"Bolsa de estudos", false, 1500f}
 		};
 		Object[][] rendimentos2 = {
-			    {"Salário", true, 7000f},
-			    {"Aluguel de Temporada", true, 3000f},
-			    {"Lucro de ações", false, 1800f}
+				{"Salário", true, 7000f},
+				{"Aluguel de Temporada", true, 3000f},
+				{"Lucro de ações", false, 1800f}
 		};
 		Object[][] rendimentos3 = {
-		    {"Salário", true, 6000f},
-		    {"Dividendos", true, 2500f},
-		    {"Bolsa de Pesquisa", false, 1200f}
+				{"Salário", true, 6000f},
+				{"Dividendos", true, 2500f},
+				{"Bolsa de Pesquisa", false, 1200f}
 		};
 
 		Object[][] outrasDeducoes1 = {{"prev. privada", 1000f}};
@@ -89,11 +89,10 @@ public class TesteImpostoPorFaixa {
 		Object[][] pensoes2 = {{"Lucas", 1300f},{"Ana", 1800f}};
 		Object[][] pensoes3 = {{"Pedro", 1000f}, {"Clara", 1400f}};
 
-		
 		float[] impostoFaixa1 = {0, 42.56f, 138.66f, 205.56f, 590.08f};
 		float[] impostoFaixa2 = {0, 42.56f, 138.66f, 150.70f, 0};
 		float[] impostoFaixa3 = {0, 42.56f, 51.63f, 0, 0};
-		
+
 		Object[][] parametros = new Object[][] {
 			{rendimentos1, outrasDeducoes1, previdencias1, dependentes1, pensoes1, impostoFaixa1},
 			{rendimentos2, outrasDeducoes2, previdencias2, dependentes2, pensoes2, impostoFaixa2},
