@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -103,6 +104,7 @@ public class TesteImpostoPorFaixa {
 	}
 
 	@Test
+	@Category(TesteUnitario.class)
 	public void test() {        
 		assertArrayEquals(irpf.getImpostoPorFaixa(), impostoPorFaixa, 0.01f);
 	}

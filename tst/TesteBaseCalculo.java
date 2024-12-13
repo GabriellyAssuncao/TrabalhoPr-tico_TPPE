@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -99,6 +100,7 @@ public class TesteBaseCalculo {
 	}
 
 	@Test
+	@Category(TesteUnitario.class)
 	public void test() {
 		assertEquals(irpf.getBaseCalculo(), baseCalculo, 0.1f);
 	}
