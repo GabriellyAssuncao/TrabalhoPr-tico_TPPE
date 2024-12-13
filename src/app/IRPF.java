@@ -54,6 +54,13 @@ public class IRPF {
 	 * @param valor valor do rendimento a ser cadastrado
 	 */
 	public void criarRendimento(String nome, boolean tributavel, float valor) {
+		if (valor < 0) {
+			throw new IllegalArgumentException("O valor do rendimento não pode ser negativo.");
+		}
+		if (nome == null || nome.isEmpty()) {
+			throw new IllegalArgumentException("O nome do rendimento não pode ser nulo ou vazio.");
+		}
+
 		//Adicionar o nome do novo rendimento
 		String[] temp = new String[nomeRendimento.length + 1];
 		for (int i=0; i<nomeRendimento.length; i++)
@@ -118,7 +125,8 @@ public class IRPF {
 	 * @param parentesco Grau de parentesco
 	 */
 	public void cadastrarDependente(String nome, String parentesco) {
-		// adicionar dependente 
+
+		// adicionar dependente
 		String[] temp = new String[nomesDependentes.length + 1];
 		for (int i=0; i<nomesDependentes.length; i++) {
 			temp[i] = nomesDependentes[i];
@@ -163,6 +171,9 @@ public class IRPF {
 	 * @param contribuicao valor da contribuição previdenciária oficial
 	 */
 	public void cadastrarContribuicaoPrevidenciaria(float contribuicao) {
+		if (contribuicao < 0) {
+			throw new IllegalArgumentException("A contribuição previdenciária não pode ser negativa.");
+		}
 		numContribuicaoPrevidenciaria++;
 		totalContribuicaoPrevidenciaria += contribuicao;
 	}
@@ -218,7 +229,10 @@ public class IRPF {
 	 * @param valor valor da pensao alimenticia
 	 */
 	public void cadastrarPensaoAlimenticia(String dependente, float valor) {
-		String parentesco = getParentesco(dependente); 
+		if (getParentesco(dependente) == null) {
+			throw new IllegalArgumentException("Dependente não encontrado para cadastrar pensão alimentícia.");
+		}
+		String parentesco = getParentesco(dependente);
 		if (parentesco.toLowerCase().contains("filh") || 
 			parentesco.toLowerCase().contains("alimentand")) {
 			totalPensaoAlimenticia += valor;
@@ -367,6 +381,6 @@ public class IRPF {
 
         return aliquotaEfetiva;
 	}
-	
-	
+
+
 }
