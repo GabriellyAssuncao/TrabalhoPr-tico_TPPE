@@ -2,6 +2,7 @@ package tst;
 
 import app.IRPF;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -35,12 +36,12 @@ public class TestExcecao {
     }
 
     @Test
+    @Category(TesteExcecao.class)
     public void testCriarRendimento() {
         IRPF irpf = new IRPF();
         try {
             irpf.criarRendimento(nome, tributavel, valor);
             if (expectedException != null) {
-                // Falha o teste se exceção esperada não for lançada
                 throw new AssertionError("Exceção esperada: " + expectedException.getSimpleName());
             }
         } catch (Exception e) {
