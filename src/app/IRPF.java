@@ -17,13 +17,13 @@ public class IRPF {
 	private String[] parentescosDependentes;
 	private int numDependentes;
 	
-	private int numContribuicaoPrevidenciaria;
-	private float totalContribuicaoPrevidenciaria;
+	private int numContribuicaoPrevidenciaria; // Madu vai fazer Extrair Classe nesse
+	private float totalContribuicaoPrevidenciaria; // Madu vai fazer Extrair Classe nesse
 	
 	private float totalPensaoAlimenticia;
 	
-	private String[] nomesDeducoes;
-	private float[] valoresDeducoes;
+	private String[] nomesDeducoes; // Madu vai fazer Extrair Classe nesse
+	private float[] valoresDeducoes; // Madu vai fazer Extrair Classe nesse
 	
 
 	public IRPF() {
