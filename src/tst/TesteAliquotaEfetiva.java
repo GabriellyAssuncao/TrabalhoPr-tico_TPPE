@@ -47,7 +47,7 @@ public class TesteAliquotaEfetiva {
 			irpf.cadastrarDeducaoIntegral(outrasDeducoes[i][0].toString(), (float)outrasDeducoes[i][1]);
 		
 		for(int i = 0; i < previdencias.length; i++)
-			irpf.cadastrarContribuicaoPrevidenciaria(previdencias[i]);
+			irpf.cadastrarContribuicao(previdencias[i]);
 		
 		for(int i = 0; i < dependentes.length; i++)
 			irpf.cadastrarDependente(dependentes[i][0].toString(), dependentes[i][1].toString());

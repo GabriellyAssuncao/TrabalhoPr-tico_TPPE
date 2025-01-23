@@ -17,13 +17,12 @@ public class IRPF {
 	private String[] parentescosDependentes;
 	private int numDependentes;
 	
-	private int numContribuicaoPrevidenciaria; // Madu vai fazer Extrair Classe nesse
-	private float totalContribuicaoPrevidenciaria; // Madu vai fazer Extrair Classe nesse
-	
+	private ContribuicaoPrevidenciaria contribuicaoPrevidenciaria;
+
 	private float totalPensaoAlimenticia;
 	
-	private String[] nomesDeducoes; // Madu vai fazer Extrair Classe nesse
-	private float[] valoresDeducoes; // Madu vai fazer Extrair Classe nesse
+	private String[] nomesDeducoes; 
+	private float[] valoresDeducoes; 
 	
 
 	public IRPF() {
@@ -35,8 +34,7 @@ public class IRPF {
 		parentescosDependentes = new String[0];
 		numDependentes = 0;
 		
-		numContribuicaoPrevidenciaria = 0; 
-		totalContribuicaoPrevidenciaria = 0f;
+		contribuicaoPrevidenciaria = new ContribuicaoPrevidenciaria();
 		
 		totalPensaoAlimenticia = 0f;
 		
@@ -161,7 +159,7 @@ public class IRPF {
 		for (String d: nomesDependentes) {
 			total += 189.59f;
 		}
-		total += totalContribuicaoPrevidenciaria;
+		total += getTotalContribuicoes();
 		
 		return total;
 	}
@@ -170,30 +168,26 @@ public class IRPF {
 	 * Cadastra um valor de contribuição previdenciária oficial
 	 * @param contribuicao valor da contribuição previdenciária oficial
 	 */
-	public void cadastrarContribuicaoPrevidenciaria(float contribuicao) {
-		if (contribuicao < 0) {
-			throw new IllegalArgumentException("A contribuição previdenciária não pode ser negativa.");
-		}
-		numContribuicaoPrevidenciaria++;
-		totalContribuicaoPrevidenciaria += contribuicao;
-	}
+    public void cadastrarContribuicao(float contribuicao) {
+        contribuicaoPrevidenciaria.cadastrarContribuicaoPrevidenciaria(contribuicao);
+    }
 
 	/**
 	 * Retorna o numero total de contribuições realizadas como contribuicao 
 	 * previdenciaria oficial
 	 * @return numero de contribuições realizadas
 	 */
-	public int getNumContribuicoesPrevidenciarias() {
-		return numContribuicaoPrevidenciaria;
-	}
+    public int getNumContribuicoes() {
+        return contribuicaoPrevidenciaria.getNumContribuicoesPrevidenciarias();
+    }
 
 	/**
 	 * Retorna o valor total de contribuições oficiais realizadas
 	 * @return valor total de contribuições oficiais
 	 */
-	public float getTotalContribuicoesPrevidenciarias() {
-		return totalContribuicaoPrevidenciaria;
-	}
+    public float getTotalContribuicoes() {
+        return contribuicaoPrevidenciaria.getTotalContribuicoesPrevidenciarias();
+    }
 
 	/**
 	 * Realiza busca do dependente no cadastro do contribuinte
@@ -255,8 +249,8 @@ public class IRPF {
 	 * @param valorDeducao valor da deducao
 	 */
 	public void cadastrarDeducaoIntegral(String nome, float valorDeducao) {
-    nomesDeducoes = adicionarDeducaoNome(nomesDeducoes, nome);
-    valoresDeducoes = adicionarDeducaoValor(valoresDeducoes, valorDeducao);
+		nomesDeducoes = adicionarDeducaoNome(nomesDeducoes, nome);
+		valoresDeducoes = adicionarDeducaoValor(valoresDeducoes, valorDeducao);
 	}
 
 	private String[] adicionarDeducaoNome(String[] nomesDeducoes, String nome) {
