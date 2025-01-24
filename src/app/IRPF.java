@@ -335,31 +335,40 @@ public class IRPF {
 	 * Obtem o valor do imposto de cada faixa
 	 * @return Lista de valores referente a cada faixa
 	 */
-	public float[] getImpostoPorFaixa() {
-		float baseCalculo = getBaseCalculo();
+	// public float[] getImpostoPorFaixa() {
+	// 	float baseCalculo = getBaseCalculo();
 	
-        float[] valoresTributados = new float[aliquotas.length];
+  //       float[] valoresTributados = new float[aliquotas.length];
 
-        float remanescente = baseCalculo - limites[0];
-        float limiteAnterior = limites[0];
+  //       float remanescente = baseCalculo - limites[0];
+  //       float limiteAnterior = limites[0];
 
-        for (int i = 1; i < limites.length; i++) {
-            if (remanescente > 0) {
-                float faixa = Math.min(remanescente, limites[i] - limiteAnterior);
-                valoresTributados[i] = faixa * aliquotas[i];
-                remanescente -= faixa;
-                limiteAnterior = limites[i];
-            }
-        }
+  //       for (int i = 1; i < limites.length; i++) {
+  //           if (remanescente > 0) {
+  //               float faixa = Math.min(remanescente, limites[i] - limiteAnterior);
+  //               valoresTributados[i] = faixa * aliquotas[i];
+  //               remanescente -= faixa;
+  //               limiteAnterior = limites[i];
+  //           }
+  //       }
         
-        if (remanescente > 0) {
-            valoresTributados[valoresTributados.length - 1] += remanescente * aliquotas[aliquotas.length - 1];
-        }
+  //       if (remanescente > 0) {
+  //           valoresTributados[valoresTributados.length - 1] += remanescente * aliquotas[aliquotas.length - 1];
+  //       }
 
-        return valoresTributados;
+  //       return valoresTributados;
+	// }
+		
+		
+	public float[] getImpostoPorFaixa() {
+		float baseCalculo = getBaseCalculo();  // Obtém o valor da base de cálculo
+
+		 
+		ImpostoPorFaixa imposto = new ImpostoPorFaixa(baseCalculo, limites, aliquotas);
+	
+		 
+		return imposto.calcular();
 	}
-	
-	
 	/**
 	 * Obtem o valor total do imposto 
 	 * @return valor resultante da soma de todos os impostos por faixa
