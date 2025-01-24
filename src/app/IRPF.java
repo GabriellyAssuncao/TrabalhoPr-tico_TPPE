@@ -358,36 +358,16 @@ public class IRPF {
 
   //       return valoresTributados;
 	// }
-		public class ImpostoPorFaixa {
-
-			public float[] calcular() {
-					float baseCalculo = getBaseCalculo();
-
-					float[] valoresTributados = new float[aliquotas.length];
-
-					float remanescente = baseCalculo - limites[0];
-					float limiteAnterior = limites[0];
-
-					for (int i = 1; i < limites.length; i++) {
-							if (remanescente > 0) {
-									float limiteFaixa = limites[i];
-									if (remanescente > (limiteFaixa - limiteAnterior)) {
-											valoresTributados[i] = (limiteFaixa - limiteAnterior) * aliquotas[i];
-											remanescente -= (limiteFaixa - limiteAnterior);
-									} else {
-											valoresTributados[i] = remanescente * aliquotas[i];
-											remanescente = 0;
-									}
-									limiteAnterior = limiteFaixa;
-							}
-					}
-					return valoresTributados;
-			}
-		}
+		
 		
 	public float[] getImpostoPorFaixa() {
-			ImpostoPorFaixa imposto = new ImpostoPorFaixa();
-			return imposto.calcular();
+		float baseCalculo = getBaseCalculo();  // Obtém o valor da base de cálculo
+
+		 
+		ImpostoPorFaixa imposto = new ImpostoPorFaixa(baseCalculo, limites, aliquotas);
+	
+		 
+		return imposto.calcular();
 	}
 	/**
 	 * Obtem o valor total do imposto 
