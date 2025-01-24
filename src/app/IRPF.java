@@ -1,5 +1,8 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class IRPF {
 
 	public static final boolean TRIBUTAVEL = true;
@@ -12,7 +15,8 @@ public class IRPF {
 	private float[] valorRendimento;
 	private int numRendimentos;
 	private float totalRendimentos;
-	
+
+	private List<Dependente> dependentes;
 	private String[] nomesDependentes;
 	private String[] parentescosDependentes;
 	private int numDependentes;
@@ -31,6 +35,7 @@ public class IRPF {
 		rendimentoTributavel = new boolean[0];
 		valorRendimento = new float[0];
 		
+		dependentes = new ArrayList<>();
 		nomesDependentes = new String[0];
 		parentescosDependentes = new String[0];
 		numDependentes = 0;
@@ -125,27 +130,7 @@ public class IRPF {
 	 * @param parentesco Grau de parentesco
 	 */
 	public void cadastrarDependente(String nome, String parentesco) {
-		addNomeDependente(nome);
-		addParentescoDependente(parentesco);
-		numDependentes++;
-	}
-
-	public void addParentescoDependente(String parentesco) {
-		String[] temp2 = new String[parentescosDependentes.length + 1];
-		for (int i=0; i<parentescosDependentes.length; i++) {
-			temp2[i] = parentescosDependentes[i];
-		}
-		temp2[parentescosDependentes.length] = parentesco;
-		parentescosDependentes = temp2;
-	}
-
-	public void addNomeDependente(String nome) {
-		String[] temp = new String[nomesDependentes.length + 1];
-		for (int i=0; i<nomesDependentes.length; i++) {
-			temp[i] = nomesDependentes[i];
-		}
-		temp[nomesDependentes.length] = nome;
-		nomesDependentes = temp;
+		dependentes.add(new Dependente(nome, parentesco));
 	}
 
 	/**
@@ -153,7 +138,7 @@ public class IRPF {
 	 * @return numero de dependentes
 	 */
 	public int getNumDependentes() {
-		return numDependentes;
+		return dependentes.size();
 	}
 	
 	/**
@@ -162,7 +147,7 @@ public class IRPF {
 	 */
 	public float getDeducao() {
 		float total = 0; 
-		for (String d: nomesDependentes) {
+		for (Dependente d : dependentes) {
 			total += 189.59f;
 		}
 		total += totalContribuicaoPrevidenciaria;
@@ -205,9 +190,9 @@ public class IRPF {
 	 * @return nome do dependente ou null, caso nao conste na lista de dependentes
 	 */
 	public String getDependente(String nome) {
-		for (String d : nomesDependentes) {
-			if (d.contains(nome))
-				return d;
+		for (Dependente d : dependentes) {
+			if (d.getNome().contains(nome))
+				return d.getNome();
 		}
 		return null;
 	}
@@ -219,9 +204,9 @@ public class IRPF {
 	 * @return grau de parentesco, nulo caso nao exista o dependente
 	 */
 	public String getParentesco(String dependente) {
-		for (int i = 0; i<nomesDependentes.length; i++) {
-			if (nomesDependentes[i].equalsIgnoreCase(dependente))
-				return parentescosDependentes[i];
+		for (Dependente d : dependentes) {
+			if (d.getNome().equalsIgnoreCase(dependente))
+				return d.getParentesco();
 		}
 		return null;
 	}
