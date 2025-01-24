@@ -53,7 +53,6 @@ public class IRPF {
 		}
 
 		rendimentos.add(new Rendimento(nome, tributavel, valor));
-		this.totalRendimentos += valor;
 	}
 
 	/**
