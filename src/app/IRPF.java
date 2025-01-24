@@ -1,5 +1,8 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class IRPF {
 
 	public static final boolean TRIBUTAVEL = true;
@@ -7,15 +10,9 @@ public class IRPF {
 	public static float[] limites = {2259.20f, 2826.65f, 3751.05f, 4664.68f};
 	public static float[] aliquotas = {0, 0.075f, 0.15f, 0.225f, 0.275f};
 	
-	private String[] nomeRendimento;
-	private boolean[] rendimentoTributavel;
-	private float[] valorRendimento;
-	private int numRendimentos;
-	private float totalRendimentos;
-	
-	private String[] nomesDependentes;
-	private String[] parentescosDependentes;
-	private int numDependentes;
+	private List<Rendimento> rendimentos;
+
+	private List<Dependente> dependentes;
 	
 	private ContribuicaoPrevidenciaria contribuicaoPrevidenciaria;
 
@@ -26,13 +23,9 @@ public class IRPF {
 	
 
 	public IRPF() {
-		nomeRendimento = new String[0];
-		rendimentoTributavel = new boolean[0];
-		valorRendimento = new float[0];
+		rendimentos = new ArrayList<>();
 		
-		nomesDependentes = new String[0];
-		parentescosDependentes = new String[0];
-		numDependentes = 0;
+		dependentes = new ArrayList<>();
 		
 		contribuicaoPrevidenciaria = new ContribuicaoPrevidenciaria();
 		
@@ -40,8 +33,6 @@ public class IRPF {
 		
 		nomesDeducoes = new String[0];
 		valoresDeducoes = new float[0];
-		
-		
 	}
 	
 	/**
@@ -59,31 +50,7 @@ public class IRPF {
 			throw new IllegalArgumentException("O nome do rendimento não pode ser nulo ou vazio.");
 		}
 
-		//Adicionar o nome do novo rendimento
-		String[] temp = new String[nomeRendimento.length + 1];
-		for (int i=0; i<nomeRendimento.length; i++)
-			temp[i] = nomeRendimento[i];
-		temp[nomeRendimento.length] = nome;
-		nomeRendimento = temp;
-
-		//adicionar tributavel ou nao no vetor 
-		boolean[] temp2 = new boolean[rendimentoTributavel.length + 1];
-		for (int i=0; i<rendimentoTributavel.length; i++) 
-			temp2[i] = rendimentoTributavel[i];
-		temp2[rendimentoTributavel.length] = tributavel;
-		rendimentoTributavel = temp2;
-		
-		//adicionar valor rendimento ao vetor
-		float[] temp3 = new float[valorRendimento.length + 1];
-		for (int i=0; i<valorRendimento.length; i++) {
-			temp3[i] = valorRendimento[i];
-		}
-		temp3[valorRendimento.length] = valor; 
-		valorRendimento = temp3;
-		
-		this.numRendimentos += 1;
-		this.totalRendimentos += valor;
-		
+		rendimentos.add(new Rendimento(nome, tributavel, valor));
 	}
 
 	/**
@@ -91,7 +58,7 @@ public class IRPF {
 	 * @return numero de rendimentos
 	 */
 	public int getNumRendimentos() {
-		return numRendimentos;
+		return rendimentos.size();
 	}
 
 	/**
@@ -99,7 +66,12 @@ public class IRPF {
 	 * @return valor total dos rendimentos
 	 */
 	public float getTotalRendimentos() {
-		return totalRendimentos;
+		float total = 0;
+
+		for (Rendimento r : rendimentos) 
+			total += r.getValor();
+
+		return total;
 	}
 
 	/**
@@ -107,13 +79,14 @@ public class IRPF {
 	 * @return valor total dos rendimentos tributáveis
 	 */
 	public float getTotalRendimentosTributaveis() {
-		float totalRendimentosTributaveis = 0;
-		for (int i=0; i<rendimentoTributavel.length; i++) {
-			if (rendimentoTributavel[i]) {
-				totalRendimentosTributaveis += valorRendimento[i];
-			}
+		float total = 0;
+
+		for (Rendimento r : rendimentos) {
+			if (r.isTributavel())
+				total += r.getValor();
 		}
-		return totalRendimentosTributaveis;
+
+		return total;
 	}
 
 	/**
@@ -123,27 +96,7 @@ public class IRPF {
 	 * @param parentesco Grau de parentesco
 	 */
 	public void cadastrarDependente(String nome, String parentesco) {
-		addNomeDependente(nome);
-		addParentescoDependente(parentesco);
-		numDependentes++;
-	}
-
-	public void addParentescoDependente(String parentesco) {
-		String[] temp2 = new String[parentescosDependentes.length + 1];
-		for (int i=0; i<parentescosDependentes.length; i++) {
-			temp2[i] = parentescosDependentes[i];
-		}
-		temp2[parentescosDependentes.length] = parentesco;
-		parentescosDependentes = temp2;
-	}
-
-	public void addNomeDependente(String nome) {
-		String[] temp = new String[nomesDependentes.length + 1];
-		for (int i=0; i<nomesDependentes.length; i++) {
-			temp[i] = nomesDependentes[i];
-		}
-		temp[nomesDependentes.length] = nome;
-		nomesDependentes = temp;
+		dependentes.add(new Dependente(nome, parentesco));
 	}
 
 	/**
@@ -151,7 +104,7 @@ public class IRPF {
 	 * @return numero de dependentes
 	 */
 	public int getNumDependentes() {
-		return numDependentes;
+		return dependentes.size();
 	}
 	
 	/**
@@ -160,7 +113,7 @@ public class IRPF {
 	 */
 	public float getDeducao() {
 		float total = 0; 
-		for (String d: nomesDependentes) {
+		for (Dependente d : dependentes) {
 			total += 189.59f;
 		}
 		total += getTotalContribuicoes();
@@ -199,9 +152,9 @@ public class IRPF {
 	 * @return nome do dependente ou null, caso nao conste na lista de dependentes
 	 */
 	public String getDependente(String nome) {
-		for (String d : nomesDependentes) {
-			if (d.contains(nome))
-				return d;
+		for (Dependente d : dependentes) {
+			if (d.getNome().contains(nome))
+				return d.getNome();
 		}
 		return null;
 	}
@@ -213,9 +166,9 @@ public class IRPF {
 	 * @return grau de parentesco, nulo caso nao exista o dependente
 	 */
 	public String getParentesco(String dependente) {
-		for (int i = 0; i<nomesDependentes.length; i++) {
-			if (nomesDependentes[i].equalsIgnoreCase(dependente))
-				return parentescosDependentes[i];
+		for (Dependente d : dependentes) {
+			if (d.getNome().equalsIgnoreCase(dependente))
+				return d.getParentesco();
 		}
 		return null;
 	}
