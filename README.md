@@ -3,6 +3,7 @@ FCTE - Faculdade de Ciências e Tecnologias em Engenharias
 FGA0242 - Técnicas de Programação para Plataformas Emergentes  
 
 ---
+# GRUPO 9
 
 ## 🧑‍💻 Desenvolvedores
 
@@ -155,7 +156,21 @@ Para essa entrega os grupos deverão criar testes triangulados (parametrizados, 
 ## Entrega 2 - Refatoração
 
 **Valor:** 20 pontos  
-**Data de entrega:** 23/12/2024  
+**Data de entrega:** ~~23/12/2024~~ 24/01/2025, 23:59hs.
+**Entrega:** através de push para os repositórios dos grupos.
+
+Com base nos artefatos entregues pelo grupo na primeira parte do trabalho, os componentes deverão refatorá-los nessa segunda etapa. Todos os grupos realizarão as mesmas operações de refatoração, variando apenas os locais onde elas serão aplicadas. As operações de refatoração a serem aplicadas são **Extrair método**, **Extrair classe** e **Substituir método por objeto-método**. As classes / métodos sujeitos às refatorações para cada grupo estão listados a seguir. 
+
+| **Grupo** | **Operação de refatoração**         | **Classe / método a ser aplicado**    |
+|-----------|-------------------------------------|---------------------------------------|
+| Grupo 9   | Extrair Método                      | IRPF.cadastrarDependente()            |
+|           | Extrair Classe                      | IRPF                                  |
+|           | Substituir método por objeto-método | IRPF.getImpostoPorFaixa()             |
+
+
+Para essa entrega os grupos deverão, obrigatoriamente, alterar as classes e os métodos listados acima e preferencialmente **não alterar as implementações dos testes** já entregues na etapa 1. A suíte de testes deverá continuar sendo implementada pela classe ```AllTests.java``` 
+
+Os grupos estão livres para decidir como aplicar a refatoração Extrair Classe mas deverão, **obrigatoriamente**, apresentar na mensagem do commit qual a justificativa para a divisão da classe em outra classe associada. Extração de classe sem a devida explicação não serão consideradas para efeitos da avaliação.  
 
 
 ## Entrega 3 - Depuração de código
