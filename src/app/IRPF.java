@@ -10,16 +10,9 @@ public class IRPF {
 	public static float[] limites = {2259.20f, 2826.65f, 3751.05f, 4664.68f};
 	public static float[] aliquotas = {0, 0.075f, 0.15f, 0.225f, 0.275f};
 	
-	private String[] nomeRendimento;
-	private boolean[] rendimentoTributavel;
-	private float[] valorRendimento;
-	private int numRendimentos;
-	private float totalRendimentos;
+	private List<Rendimento> rendimentos;
 
 	private List<Dependente> dependentes;
-	private String[] nomesDependentes;
-	private String[] parentescosDependentes;
-	private int numDependentes;
 	
 	private int numContribuicaoPrevidenciaria;
 	private float totalContribuicaoPrevidenciaria;
@@ -31,14 +24,9 @@ public class IRPF {
 	
 
 	public IRPF() {
-		nomeRendimento = new String[0];
-		rendimentoTributavel = new boolean[0];
-		valorRendimento = new float[0];
+		rendimentos = new ArrayList<>();
 		
 		dependentes = new ArrayList<>();
-		nomesDependentes = new String[0];
-		parentescosDependentes = new String[0];
-		numDependentes = 0;
 		
 		numContribuicaoPrevidenciaria = 0; 
 		totalContribuicaoPrevidenciaria = 0f;
@@ -47,8 +35,6 @@ public class IRPF {
 		
 		nomesDeducoes = new String[0];
 		valoresDeducoes = new float[0];
-		
-		
 	}
 	
 	/**
@@ -66,31 +52,8 @@ public class IRPF {
 			throw new IllegalArgumentException("O nome do rendimento não pode ser nulo ou vazio.");
 		}
 
-		//Adicionar o nome do novo rendimento
-		String[] temp = new String[nomeRendimento.length + 1];
-		for (int i=0; i<nomeRendimento.length; i++)
-			temp[i] = nomeRendimento[i];
-		temp[nomeRendimento.length] = nome;
-		nomeRendimento = temp;
-
-		//adicionar tributavel ou nao no vetor 
-		boolean[] temp2 = new boolean[rendimentoTributavel.length + 1];
-		for (int i=0; i<rendimentoTributavel.length; i++) 
-			temp2[i] = rendimentoTributavel[i];
-		temp2[rendimentoTributavel.length] = tributavel;
-		rendimentoTributavel = temp2;
-		
-		//adicionar valor rendimento ao vetor
-		float[] temp3 = new float[valorRendimento.length + 1];
-		for (int i=0; i<valorRendimento.length; i++) {
-			temp3[i] = valorRendimento[i];
-		}
-		temp3[valorRendimento.length] = valor; 
-		valorRendimento = temp3;
-		
-		this.numRendimentos += 1;
+		rendimentos.add(new Rendimento(nome, tributavel, valor));
 		this.totalRendimentos += valor;
-		
 	}
 
 	/**
@@ -98,7 +61,7 @@ public class IRPF {
 	 * @return numero de rendimentos
 	 */
 	public int getNumRendimentos() {
-		return numRendimentos;
+		return rendimentos.size();
 	}
 
 	/**
@@ -106,7 +69,12 @@ public class IRPF {
 	 * @return valor total dos rendimentos
 	 */
 	public float getTotalRendimentos() {
-		return totalRendimentos;
+		float total = 0;
+
+		for (Rendimento r : rendimentos) 
+			total += r.getValor();
+
+		return total;
 	}
 
 	/**
@@ -114,13 +82,14 @@ public class IRPF {
 	 * @return valor total dos rendimentos tributáveis
 	 */
 	public float getTotalRendimentosTributaveis() {
-		float totalRendimentosTributaveis = 0;
-		for (int i=0; i<rendimentoTributavel.length; i++) {
-			if (rendimentoTributavel[i]) {
-				totalRendimentosTributaveis += valorRendimento[i];
-			}
+		float total = 0;
+
+		for (Rendimento r : rendimentos) {
+			if (r.isTributavel())
+				total += r.getValor();
 		}
-		return totalRendimentosTributaveis;
+
+		return total;
 	}
 
 	/**
