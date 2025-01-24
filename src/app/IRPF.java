@@ -125,23 +125,27 @@ public class IRPF {
 	 * @param parentesco Grau de parentesco
 	 */
 	public void cadastrarDependente(String nome, String parentesco) {
+		addNomeDependente(nome);
+		addParentescoDependente(parentesco);
+		numDependentes++;
+	}
 
-		// adicionar dependente
-		String[] temp = new String[nomesDependentes.length + 1];
-		for (int i=0; i<nomesDependentes.length; i++) {
-			temp[i] = nomesDependentes[i];
-		}
-		temp[nomesDependentes.length] = nome;
-		nomesDependentes = temp;
-		
+	public void addParentescoDependente(String parentesco) {
 		String[] temp2 = new String[parentescosDependentes.length + 1];
 		for (int i=0; i<parentescosDependentes.length; i++) {
 			temp2[i] = parentescosDependentes[i];
 		}
 		temp2[parentescosDependentes.length] = parentesco;
 		parentescosDependentes = temp2;
-		
-		numDependentes++;
+	}
+
+	public void addNomeDependente(String nome) {
+		String[] temp = new String[nomesDependentes.length + 1];
+		for (int i=0; i<nomesDependentes.length; i++) {
+			temp[i] = nomesDependentes[i];
+		}
+		temp[nomesDependentes.length] = nome;
+		nomesDependentes = temp;
 	}
 
 	/**
